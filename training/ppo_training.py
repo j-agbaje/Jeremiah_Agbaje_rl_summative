@@ -3,7 +3,7 @@ import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from environment.custom_env import StudySchedulerEnv
-from stable_baselines3 import DQN
+from stable_baselines3 import PPO
 from stable_baselines3.common.callbacks import EvalCallback, CheckpointCallback
 from stable_baselines3.common.monitor import Monitor
 import numpy as np
@@ -12,28 +12,28 @@ import json
 
 # Hyperparameter configurations to test
 CONFIGS = [
-    {"learning_rate": 1e-3, "gamma": 0.99, "buffer_size": 10000, "batch_size": 64, "exploration_fraction": 0.1, "exploration_initial_eps": 1.0, "exploration_final_eps": 0.05},
-    {"learning_rate": 5e-4, "gamma": 0.99, "buffer_size": 10000, "batch_size": 64, "exploration_fraction": 0.1, "exploration_initial_eps": 1.0, "exploration_final_eps": 0.05},
-    {"learning_rate": 1e-4, "gamma": 0.99, "buffer_size": 10000, "batch_size": 64, "exploration_fraction": 0.1, "exploration_initial_eps": 1.0, "exploration_final_eps": 0.05},
-    {"learning_rate": 1e-3, "gamma": 0.95, "buffer_size": 10000, "batch_size": 64, "exploration_fraction": 0.1, "exploration_initial_eps": 1.0, "exploration_final_eps": 0.05},
-    {"learning_rate": 1e-3, "gamma": 0.99, "buffer_size": 50000, "batch_size": 64, "exploration_fraction": 0.2, "exploration_initial_eps": 1.0, "exploration_final_eps": 0.1},
-    {"learning_rate": 1e-3, "gamma": 0.99, "buffer_size": 10000, "batch_size": 32, "exploration_fraction": 0.15, "exploration_initial_eps": 0.8, "exploration_final_eps": 0.05},
-    {"learning_rate": 1e-3, "gamma": 0.99, "buffer_size": 10000, "batch_size": 128, "exploration_fraction": 0.1, "exploration_initial_eps": 1.0, "exploration_final_eps": 0.02},
-    {"learning_rate": 5e-4, "gamma": 0.99, "buffer_size": 10000, "batch_size": 64, "exploration_fraction": 0.3, "exploration_initial_eps": 1.0, "exploration_final_eps": 0.1},
-    {"learning_rate": 5e-4, "gamma": 0.95, "buffer_size": 50000, "batch_size": 32, "exploration_fraction": 0.15, "exploration_initial_eps": 0.9, "exploration_final_eps": 0.05},
-    {"learning_rate": 1e-4, "gamma": 0.99, "buffer_size": 50000, "batch_size": 128, "exploration_fraction": 0.05, "exploration_initial_eps": 1.0, "exploration_final_eps": 0.01},
+    {"learning_rate": 3e-4, "gamma": 0.99, "n_steps": 2048, "batch_size": 64, "clip_range": 0.2, "ent_coef": 0.0},
+    {"learning_rate": 1e-3, "gamma": 0.99, "n_steps": 2048, "batch_size": 64, "clip_range": 0.2, "ent_coef": 0.0},
+    {"learning_rate": 1e-4, "gamma": 0.99, "n_steps": 2048, "batch_size": 64, "clip_range": 0.2, "ent_coef": 0.0},
+    {"learning_rate": 3e-4, "gamma": 0.95, "n_steps": 2048, "batch_size": 64, "clip_range": 0.2, "ent_coef": 0.0},
+    {"learning_rate": 3e-4, "gamma": 0.99, "n_steps": 1024, "batch_size": 32, "clip_range": 0.2, "ent_coef": 0.01},
+    {"learning_rate": 3e-4, "gamma": 0.99, "n_steps": 4096, "batch_size": 128, "clip_range": 0.2, "ent_coef": 0.0},
+    {"learning_rate": 3e-4, "gamma": 0.99, "n_steps": 2048, "batch_size": 64, "clip_range": 0.3, "ent_coef": 0.0},
+    {"learning_rate": 3e-4, "gamma": 0.99, "n_steps": 2048, "batch_size": 64, "clip_range": 0.1, "ent_coef": 0.01},
+    {"learning_rate": 5e-4, "gamma": 0.95, "n_steps": 1024, "batch_size": 32, "clip_range": 0.25, "ent_coef": 0.005},
+    {"learning_rate": 1e-4, "gamma": 0.99, "n_steps": 4096, "batch_size": 128, "clip_range": 0.15, "ent_coef": 0.0},
 ]
 
-def train_dqn(config, run_number, total_timesteps=50000):
-    """Train a single DQN model with given hyperparameters."""
+def train_ppo(config, run_number, total_timesteps=50000):
+    """Train a single PPO model with given hyperparameters."""
     print(f"\n{'='*60}")
-    print(f"Training DQN Run {run_number + 1}/10")
+    print(f"Training PPO Run {run_number + 1}/10")
     print(f"Config: {config}")
     print(f"{'='*60}\n")
     
     # Create directories
-    log_dir = f"./logs/dqn/run_{run_number}"
-    model_dir = f"./models/dqn/run_{run_number}"
+    log_dir = f"./logs/ppo/run_{run_number}"
+    model_dir = f"./models/ppo/run_{run_number}"
     os.makedirs(log_dir, exist_ok=True)
     os.makedirs(model_dir, exist_ok=True)
     
@@ -46,19 +46,19 @@ def train_dqn(config, run_number, total_timesteps=50000):
     eval_env = Monitor(eval_env)
     
     # Create model
-    model = DQN(
+    model = PPO(
         "MlpPolicy",
         env,
         learning_rate=config["learning_rate"],
         gamma=config["gamma"],
-        buffer_size=config["buffer_size"],
+        n_steps=config["n_steps"],
         batch_size=config["batch_size"],
-        exploration_fraction=config["exploration_fraction"],
-        exploration_initial_eps=1.0,
-        exploration_final_eps=0.05,
-        target_update_interval=1000,
-        learning_starts=1000,
-        train_freq=4,
+        clip_range=config["clip_range"],
+        ent_coef=config["ent_coef"],
+        n_epochs=10,
+        gae_lambda=0.95,
+        max_grad_norm=0.5,
+        vf_coef=0.5,
         verbose=1,
         tensorboard_log=log_dir
     )
@@ -76,7 +76,7 @@ def train_dqn(config, run_number, total_timesteps=50000):
     checkpoint_callback = CheckpointCallback(
         save_freq=10000,
         save_path=model_dir,
-        name_prefix="dqn_checkpoint"
+        name_prefix="ppo_checkpoint"
     )
     
     # Train
@@ -135,7 +135,7 @@ def plot_results(all_results):
     plt.bar(range(len(all_results)), mean_rewards)
     plt.xlabel("Run Number")
     plt.ylabel("Mean Reward")
-    plt.title("DQN Performance Across Runs")
+    plt.title("PPO Performance Across Runs")
     plt.xticks(range(len(all_results)), [f"Run {i+1}" for i in range(len(all_results))], rotation=45)
     
     # Plot 2: Learning rate vs performance
@@ -154,30 +154,30 @@ def plot_results(all_results):
     plt.grid(True)
     
     plt.tight_layout()
-    plt.savefig("./models/dqn/comparison.png")
-    print("Saved comparison plot to ./models/dqn/comparison.png")
+    plt.savefig("./models/ppo/comparison.png")
+    print("Saved comparison plot to ./models/ppo/comparison.png")
 
 if __name__ == "__main__":
-    print("Starting DQN Training with 10 Hyperparameter Configurations")
+    print("Starting PPO Training with 10 Hyperparameter Configurations")
     print("=" * 60)
     
     # Create base directories
-    os.makedirs("./models/dqn", exist_ok=True)
-    os.makedirs("./logs/dqn", exist_ok=True)
+    os.makedirs("./models/ppo", exist_ok=True)
+    os.makedirs("./logs/ppo", exist_ok=True)
     
     all_results = []
     
     # Train with each configuration
     for i, config in enumerate(CONFIGS):
         try:
-            results = train_dqn(config, i, total_timesteps=50000)
+            results = train_ppo(config, i, total_timesteps=50000)
             all_results.append(results)
         except Exception as e:
             print(f"Error in run {i+1}: {e}")
             continue
     
     # Save all results
-    with open("./models/dqn/all_results.json", "w") as f:
+    with open("./models/ppo/all_results.json", "w") as f:
         json.dump(all_results, f, indent=2)
     
     # Plot comparisons

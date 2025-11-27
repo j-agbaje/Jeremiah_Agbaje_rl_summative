@@ -1,5 +1,4 @@
 .venv/
 environment/__pycache__/
-
-*.db
+*.pyc
 .DS_Store
