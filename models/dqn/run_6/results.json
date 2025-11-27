@@ -1,0 +1,13 @@
+{
+  "config": {
+    "learning_rate": 0.001,
+    "gamma": 0.99,
+    "buffer_size": 10000,
+    "batch_size": 128,
+    "exploration_fraction": 0.1,
+    "exploration_initial_eps": 1.0,
+    "exploration_final_eps": 0.02
+  },
+  "mean_reward": 11.02,
+  "run_number": 6
+}

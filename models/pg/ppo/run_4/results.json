@@ -1,0 +1,12 @@
+{
+  "config": {
+    "learning_rate": 0.0003,
+    "gamma": 0.99,
+    "n_steps": 1024,
+    "batch_size": 32,
+    "clip_range": 0.2,
+    "ent_coef": 0.01
+  },
+  "mean_reward": 10.55,
+  "run_number": 4
+}

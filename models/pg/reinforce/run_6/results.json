@@ -1,0 +1,8 @@
+{
+  "config": {
+    "learning_rate": 0.0003,
+    "gamma": 0.99
+  },
+  "mean_reward": -15.6,
+  "run_number": 6
+}

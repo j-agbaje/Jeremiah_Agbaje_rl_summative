@@ -1,0 +1,132 @@
+[
+  {
+    "config": {
+      "learning_rate": 0.001,
+      "gamma": 0.99,
+      "buffer_size": 10000,
+      "batch_size": 64,
+      "exploration_fraction": 0.1,
+      "exploration_initial_eps": 1.0,
+      "exploration_final_eps": 0.05
+    },
+    "mean_reward": 6.25,
+    "run_number": 0
+  },
+  {
+    "config": {
+      "learning_rate": 0.0005,
+      "gamma": 0.99,
+      "buffer_size": 10000,
+      "batch_size": 64,
+      "exploration_fraction": 0.1,
+      "exploration_initial_eps": 1.0,
+      "exploration_final_eps": 0.05
+    },
+    "mean_reward": 12.98,
+    "run_number": 1
+  },
+  {
+    "config": {
+      "learning_rate": 0.0001,
+      "gamma": 0.99,
+      "buffer_size": 10000,
+      "batch_size": 64,
+      "exploration_fraction": 0.1,
+      "exploration_initial_eps": 1.0,
+      "exploration_final_eps": 0.05
+    },
+    "mean_reward": -4.1,
+    "run_number": 2
+  },
+  {
+    "config": {
+      "learning_rate": 0.001,
+      "gamma": 0.95,
+      "buffer_size": 10000,
+      "batch_size": 64,
+      "exploration_fraction": 0.1,
+      "exploration_initial_eps": 1.0,
+      "exploration_final_eps": 0.05
+    },
+    "mean_reward": 7.82,
+    "run_number": 3
+  },
+  {
+    "config": {
+      "learning_rate": 0.001,
+      "gamma": 0.99,
+      "buffer_size": 50000,
+      "batch_size": 64,
+      "exploration_fraction": 0.2,
+      "exploration_initial_eps": 1.0,
+      "exploration_final_eps": 0.1
+    },
+    "mean_reward": 7.15,
+    "run_number": 4
+  },
+  {
+    "config": {
+      "learning_rate": 0.001,
+      "gamma": 0.99,
+      "buffer_size": 10000,
+      "batch_size": 32,
+      "exploration_fraction": 0.15,
+      "exploration_initial_eps": 0.8,
+      "exploration_final_eps": 0.05
+    },
+    "mean_reward": 0.56,
+    "run_number": 5
+  },
+  {
+    "config": {
+      "learning_rate": 0.001,
+      "gamma": 0.99,
+      "buffer_size": 10000,
+      "batch_size": 128,
+      "exploration_fraction": 0.1,
+      "exploration_initial_eps": 1.0,
+      "exploration_final_eps": 0.02
+    },
+    "mean_reward": 11.02,
+    "run_number": 6
+  },
+  {
+    "config": {
+      "learning_rate": 0.0005,
+      "gamma": 0.99,
+      "buffer_size": 10000,
+      "batch_size": 64,
+      "exploration_fraction": 0.3,
+      "exploration_initial_eps": 1.0,
+      "exploration_final_eps": 0.1
+    },
+    "mean_reward": 6.3,
+    "run_number": 7
+  },
+  {
+    "config": {
+      "learning_rate": 0.0005,
+      "gamma": 0.95,
+      "buffer_size": 50000,
+      "batch_size": 32,
+      "exploration_fraction": 0.15,
+      "exploration_initial_eps": 0.9,
+      "exploration_final_eps": 0.05
+    },
+    "mean_reward": 4.86,
+    "run_number": 8
+  },
+  {
+    "config": {
+      "learning_rate": 0.0001,
+      "gamma": 0.99,
+      "buffer_size": 50000,
+      "batch_size": 128,
+      "exploration_fraction": 0.05,
+      "exploration_initial_eps": 1.0,
+      "exploration_final_eps": 0.01
+    },
+    "mean_reward": -1.58,
+    "run_number": 9
+  }
+]
