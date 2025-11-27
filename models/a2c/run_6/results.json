@@ -1,0 +1,11 @@
+{
+  "config": {
+    "learning_rate": 0.0007,
+    "gamma": 0.99,
+    "n_steps": 5,
+    "ent_coef": 0.0,
+    "vf_coef": 1.0
+  },
+  "mean_reward": 10.32,
+  "run_number": 6
+}

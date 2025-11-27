@@ -1,0 +1,112 @@
+[
+  {
+    "config": {
+      "learning_rate": 0.0007,
+      "gamma": 0.99,
+      "n_steps": 5,
+      "ent_coef": 0.0,
+      "vf_coef": 0.5
+    },
+    "mean_reward": 2.79,
+    "run_number": 0
+  },
+  {
+    "config": {
+      "learning_rate": 0.001,
+      "gamma": 0.99,
+      "n_steps": 5,
+      "ent_coef": 0.0,
+      "vf_coef": 0.5
+    },
+    "mean_reward": 9.13,
+    "run_number": 1
+  },
+  {
+    "config": {
+      "learning_rate": 0.0003,
+      "gamma": 0.99,
+      "n_steps": 5,
+      "ent_coef": 0.0,
+      "vf_coef": 0.5
+    },
+    "mean_reward": 10.28,
+    "run_number": 2
+  },
+  {
+    "config": {
+      "learning_rate": 0.0007,
+      "gamma": 0.95,
+      "n_steps": 5,
+      "ent_coef": 0.0,
+      "vf_coef": 0.5
+    },
+    "mean_reward": 6.22,
+    "run_number": 3
+  },
+  {
+    "config": {
+      "learning_rate": 0.0007,
+      "gamma": 0.99,
+      "n_steps": 10,
+      "ent_coef": 0.01,
+      "vf_coef": 0.5
+    },
+    "mean_reward": 7.18,
+    "run_number": 4
+  },
+  {
+    "config": {
+      "learning_rate": 0.0007,
+      "gamma": 0.99,
+      "n_steps": 20,
+      "ent_coef": 0.0,
+      "vf_coef": 0.25
+    },
+    "mean_reward": 6.53,
+    "run_number": 5
+  },
+  {
+    "config": {
+      "learning_rate": 0.0007,
+      "gamma": 0.99,
+      "n_steps": 5,
+      "ent_coef": 0.0,
+      "vf_coef": 1.0
+    },
+    "mean_reward": 10.32,
+    "run_number": 6
+  },
+  {
+    "config": {
+      "learning_rate": 0.0005,
+      "gamma": 0.99,
+      "n_steps": 10,
+      "ent_coef": 0.01,
+      "vf_coef": 0.5
+    },
+    "mean_reward": 9.96,
+    "run_number": 7
+  },
+  {
+    "config": {
+      "learning_rate": 0.001,
+      "gamma": 0.95,
+      "n_steps": 20,
+      "ent_coef": 0.005,
+      "vf_coef": 0.25
+    },
+    "mean_reward": 8.05,
+    "run_number": 8
+  },
+  {
+    "config": {
+      "learning_rate": 0.0003,
+      "gamma": 0.99,
+      "n_steps": 5,
+      "ent_coef": 0.0,
+      "vf_coef": 0.75
+    },
+    "mean_reward": 8.18,
+    "run_number": 9
+  }
+]
