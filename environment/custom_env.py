@@ -63,20 +63,10 @@ class StudySchedulerEnv(gym.Env):
         return observation, info
     
 
-    # def step(self, action):
-    #     """Execute one time step within the environment."""
-    #     assert self.action_space.contains(action), "Invalid Action"
-
-    #     Example dynamics: random next state
-    #     self.state = np.random.rand(3)
-
-    #     reward = 1.0 if action == 1 else 0.0  # Example reward structure
-    #     done = np.random.rand() > 0.95  # Randomly end the episode
-
-    #     return self.state, reward, done, False, {}
 
     def step(self, action):
         """Execute one time step (one day) within the environment."""
+        self.last_action = action
         reward = 0
         studied_today = False
         accepted = False

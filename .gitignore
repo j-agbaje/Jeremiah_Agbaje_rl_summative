@@ -1,1 +1,5 @@
 .venv/
+environment/__pycache__/
+
+*.db
+.DS_Store
