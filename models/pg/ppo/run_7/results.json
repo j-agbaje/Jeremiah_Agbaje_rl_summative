@@ -7,6 +7,6 @@
     "clip_range": 0.1,
     "ent_coef": 0.01
   },
-  "mean_reward": 10.1,
+  "mean_reward": 8.74,
   "run_number": 7
 }

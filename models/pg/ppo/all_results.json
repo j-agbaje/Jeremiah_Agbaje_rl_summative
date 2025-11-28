@@ -8,7 +8,7 @@
       "clip_range": 0.2,
       "ent_coef": 0.0
     },
-    "mean_reward": 9.57,
+    "mean_reward": 11.2,
     "run_number": 0
   },
   {
@@ -20,7 +20,7 @@
       "clip_range": 0.2,
       "ent_coef": 0.0
     },
-    "mean_reward": 14.69,
+    "mean_reward": 10.22,
     "run_number": 1
   },
   {
@@ -32,7 +32,7 @@
       "clip_range": 0.2,
       "ent_coef": 0.0
     },
-    "mean_reward": 10.07,
+    "mean_reward": 7.08,
     "run_number": 2
   },
   {
@@ -44,7 +44,7 @@
       "clip_range": 0.2,
       "ent_coef": 0.0
     },
-    "mean_reward": 4.99,
+    "mean_reward": 10.01,
     "run_number": 3
   },
   {
@@ -56,7 +56,7 @@
       "clip_range": 0.2,
       "ent_coef": 0.01
     },
-    "mean_reward": 10.55,
+    "mean_reward": 14.28,
     "run_number": 4
   },
   {
@@ -68,7 +68,7 @@
       "clip_range": 0.2,
       "ent_coef": 0.0
     },
-    "mean_reward": 9.93,
+    "mean_reward": 5.56,
     "run_number": 5
   },
   {
@@ -80,7 +80,7 @@
       "clip_range": 0.3,
       "ent_coef": 0.0
     },
-    "mean_reward": 6.91,
+    "mean_reward": 13.07,
     "run_number": 6
   },
   {
@@ -92,7 +92,7 @@
       "clip_range": 0.1,
       "ent_coef": 0.01
     },
-    "mean_reward": 10.1,
+    "mean_reward": 8.74,
     "run_number": 7
   },
   {
@@ -104,7 +104,7 @@
       "clip_range": 0.25,
       "ent_coef": 0.005
     },
-    "mean_reward": 5.66,
+    "mean_reward": 8.5,
     "run_number": 8
   },
   {
@@ -116,7 +116,7 @@
       "clip_range": 0.15,
       "ent_coef": 0.0
     },
-    "mean_reward": 4.75,
+    "mean_reward": 5.58,
     "run_number": 9
   }
 ]
